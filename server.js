@@ -1,8 +1,10 @@
 // require express-done below
 const express = require("express")
 
-// require your routes - for the api
-// require you routes - for the html
+// require your routes - for the api -done below
+const api = require("api")
+// require you routes  - done below
+const router = require("router")
 
 // initialize the app -done below
 const app = express()
@@ -10,7 +12,7 @@ const app = express()
 // create a port - reference server.js files from activities in this module -done below
 const PORT = 3001;
 
-// set up body parsing -done below
+// set up body parsing and urlencoded form data -done below
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

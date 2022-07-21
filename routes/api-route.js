@@ -23,4 +23,5 @@ api.delete('notes/:id', (req, res) => {
     // give a status letting you know it's been deleted
 })
 
-// export your router
+// export your router -done below
+module.exports = api;
