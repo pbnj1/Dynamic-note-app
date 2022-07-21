@@ -1,12 +1,29 @@
-// require express
+// require express-done below
+const express = require("express")
+
 // require your routes - for the api
 // require you routes - for the html
 
-// initialize the app
-// create a port - reference server.js files from activities in this module
+// initialize the app -done below
+const app = express()
 
-// set up body parsing, static, and route middleware - activities 15 and 16
+// create a port - reference server.js files from activities in this module -done below
+const PORT = 3001;
+
+// set up body parsing -done below
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//set up static -done below
+app.use(express.static('public'));
+
+//set up route middleware - activities 15 and 16, // activities 21 and 22 -done below?
 app.use('/api', apiRoutes);
-app.use('/', htmlRoutes); // activities 21 and 22
+app.use('/', htmlRoutes); 
 
-// start the server on the port - app.listen - reference server.js files from activites in this module
+
+// start the server on the port - app.listen - 
+// reference server.js files from activites in this module -done below
+app.listen(PORT, () =>
+  console.log(`Express server listening on port ${PORT}!`)
+);
