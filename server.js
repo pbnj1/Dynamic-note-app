@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 //set up route middleware - activities 15 and 16, // activities 21 and 22 -done below?
-app.use('/api', api_routes);
-app.use('/', html_routes); 
+app.use('/api', api);
+app.use('/', router); 
 
 
 // start the server on the port - app.listen - 

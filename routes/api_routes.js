@@ -1,6 +1,9 @@
-// require router from express - activity 21 and 22, specifically in the routes in activity 22
+// require router from express - activity 21 and 22, 
+// specifically in the routes in activity 22  -done below
 const api = require('express').Router();
-// require store from the helpers folder 
+
+// require store from the helpers folder - done below ?
+const store = require("Store")
 
 // GET ALL THE NOTES //
 api.get('/notes', (req, res) => {
