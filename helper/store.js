@@ -14,10 +14,16 @@ class Store {
   }
 
   getNotes() {
-    console.log("inside the getNotes function")
-    return this.read().then((notes) => {
+     return this.read().then((notes) => {
+      let formatedNotes;
+      try{
+        formatedNotes = [].concat(JSON.parse(notes))
+      } catch(err){
+        formatedNotes = []
+      }
+      return formatedNotes
       // parse the notes and return them
-      return readFileAsync('db/db.json', JSON.parse(notes));
+      
     })
   }
 
@@ -32,6 +38,7 @@ class Store {
     
     // get all notes with getNotes()
     this.getNotes().then((notes) => {
+      
       notes.push(newNote);
       console.log("inside the addNotes function");
       return write(notes);
