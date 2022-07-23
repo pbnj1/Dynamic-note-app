@@ -2,9 +2,9 @@
 const express = require("express")
 
 // require your routes - for the api -done below
-const apiRoutes = require("./routes/apiRoutes")
+const apiRoutes = require("./routes/apiRoutes");
 // require you routes  - done below
-const htmlRoutes = require("./routes/htmlRoutes")
+const htmlRoutes = require("./routes/htmlRoutes");
 
 // initialize the app -done below
 const app = express()
