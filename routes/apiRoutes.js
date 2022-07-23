@@ -7,9 +7,9 @@ const store = require("../helper/store");
 
 // GET ALL THE NOTES //
 apiRoutes.get('/notes', (req, res) => {
-  store
-  getNotes()
   console.info(`${req.method} request received to get notes`)
+  store.getNotes().then((notes) => res.json((notes)))
+ 
   
     // then take the notes and return them with res.json
   // readFromFile('./db.json').then((data) => res.json(JSON.parse(data)))
