@@ -3,14 +3,14 @@
 const apiRoutes = require('express').Router();
 
 // require store from the helpers folder - done below ?
-const store = require("Store")
+const store = require("../helper/store");
 
 // GET ALL THE NOTES //
 apiRoutes.get('/notes', (req, res) => {
   store
   //  getNotes()
     // then take the notes and return them with res.json
-  readFromFile('./db.json').then((data) => res.json(JSON.parse(data)))
+  // readFromFile('./db.json').then((data) => res.json(JSON.parse(data)))
    
 })
 
