@@ -21,6 +21,7 @@ class Store {
   getNotes() {
     return this.read().then((notes) => {
       // parse the notes and return them
+      return readFileAsync('db/db.json', JSON.stringify(notes));
     })
   }
 
