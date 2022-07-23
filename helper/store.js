@@ -31,7 +31,7 @@ class Store {
         id: uuid() };    // give note an id
     
     // get all notes with getNotes()
-    this.getNotes(notes).then((notes) => {
+    this.getNotes().then((notes) => {
       notes.push(newNote);
       console.log("inside the addNotes function");
       return write(notes);

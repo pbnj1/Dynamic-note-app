@@ -7,6 +7,7 @@ const store = require("../helper/store");
 
 // GET ALL THE NOTES //
 apiRoutes.get("/notes", (req, res) => {
+
   console.info(`${req.method} request received to get notes`);
   store.getNotes().then((notes) => res.json(notes));
   // then take the notes and return them with res.json
@@ -23,7 +24,7 @@ apiRoutes.post("/notes", (req, res) => {
 });
 
 // DELETE A NOTE //
-apiRoutes.delete("notes/:id", (req, res) => {
+apiRoutes.delete("/notes/:id", (req, res) => {
   store.removeNote(req.params.id)
 res.json(`Your note has been successfully deleted`)
   // give a status letting you know it's been deleted
