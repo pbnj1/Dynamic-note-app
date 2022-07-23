@@ -57,8 +57,6 @@ class Store {
       }
 
     })
-    // then go through the notes to find the one with the matching id
-    // take these updated/filtered notes - write them to file using write()
   }
 }
 

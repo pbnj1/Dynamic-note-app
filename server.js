@@ -25,7 +25,6 @@ app.use('/', htmlRoutes);
 
 
 // start the server on the port - app.listen - 
-// reference server.js files from activites in this module -done below
 app.listen(PORT, () =>
   console.log(`Express server listening on port ${PORT}!`)
 );

@@ -1,62 +1,48 @@
-// require router from express - activity 21 and 22,
-// specifically in the routes in activity 22  -done below
+// require router from express, fs, and db file
 const apiRoutes = require("express").Router();
-// const { json } = require("express");
-const fs = require("fs")
-// const storedNotes = require('./noteStore/noteStore.json');
+const fs = require("fs");
+let db = require("../db/db.json");
 
 
-// require store from the helpers folder - done below ?
-//const store = require("../helper/store");
-let noteStore = require("../noteStore/noteStore.json")
-// GET ALL THE NOTES //
-apiRoutes.get("/notes",async (req, res) => {
-
-  noteStore = JSON.parse(fs.readFileSync("./noteStore/noteStore.json"))
-  console.log(noteStore)
-  res.json(noteStore)
-  // let records = await store.getNotes()
-  //  console.info(`${req.method} request received to get notes ${records}`);
-  
-  //.then((notes) => res.json(notes));
-  // then take the notes and return them with res.json
-  // readFromFile('./noteStore.json').then((data) => res.json(JSON.parse(data)))
+//set up api get and parsed notes 
+apiRoutes.get("/notes", async (req, res) => {
+  db = JSON.parse(fs.readFileSync("./db/db.json"));
+  res.json(db);
 });
 
-// POST A NEW NOTE //
+
+//set up api post and stringified notes
 apiRoutes.post("/notes", (req, res) => {
-  console.info(`${req.method} request received inside apiRoutes.post`);
   let newNote = {
     title: req.body.title,
-    text:req.body.text,
-    id: Math.floor(Math.random()*999)
-  }
- noteStore.push(newNote)
- console.log(noteStore)
- fs.writeFileSync("./noteStore/noteStore.json",JSON.stringify(noteStore),function(err){
-    if(err) throw err;
- })
+    text: req.body.text,
+    id: Math.floor(Math.random() * 999),
+  };
+
+  db.push(newNote);
+  fs.writeFileSync("./db/db.json", JSON.stringify(db), function (err) {
+    if (err) throw err;
+  });
   res.json(req.body);
-  // addNote(req.body)
-  // then return note with res.json
+
 });
 
-// DELETE A NOTE //
+//set up api delete and re-write new notes
 apiRoutes.delete("/notes/:id", (req, res) => {
-  let newNotes = []
-  for(let i=0;i<noteStore.length;i++){
-    if(noteStore[i].id  != req.params.id){
-      newNotes.push(noteStore[i])
+  let newNotes = [];
+  for (let i = 0; i < db.length; i++) {
+    if (db[i].id != req.params.id) {
+      newNotes.push(db[i]);
     }
   }
- noteStore = newNotes
- console.log(noteStore)
- fs.writeFileSync("./noteStore/noteStore.json",JSON.stringify(noteStore),function(err){
-    if(err) throw err;
- })
+  db = newNotes;
+  console.log(db);
+  fs.writeFileSync("./db/db.json", JSON.stringify(db), function (err) {
+    if (err) throw err;
+  });
   res.json(req.body);
-  // give a status letting you know it's been deleted
+
 });
 
-// export your router -done below
+//export the router
 module.exports = apiRoutes;
