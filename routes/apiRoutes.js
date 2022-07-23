@@ -12,7 +12,7 @@ apiRoutes.get('/notes', (req, res) => {
   console.info(`${req.method} request received to get notes`)
   
     // then take the notes and return them with res.json
-  readFromFile('./db.json').then((data) => res.json(JSON.parse(data)))
+  // readFromFile('./db.json').then((data) => res.json(JSON.parse(data)))
    
 })
 
