@@ -19,9 +19,10 @@ class Store {
   }
 
   getNotes() {
+    console.log("inside the getNotes function")
     return this.read().then((notes) => {
       // parse the notes and return them
-      return readFileAsync('db/db.json', JSON.stringify(notes));
+      return readFileAsync('db/db.json', JSON.parse(notes));
     })
   }
 
@@ -29,15 +30,17 @@ class Store {
     const { title, text } = note;
 
     const newNote = { title, text, id: uuidv1() }; // give note an id
-
     // get all notes with getNotes()
+    this.getNotes()
     // then add new note to them
+
     // then take the updated set of notes - write them to the file using write()
     // then show the new note
   }
 
   removeNote(id) {
     // get all the notes use getNotes()
+    this.getNotes
     // then go through the notes to find the one with the matching id
     // take these updated/filtered notes - write them to file using write()
   }

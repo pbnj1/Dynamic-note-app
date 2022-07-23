@@ -9,16 +9,16 @@ const store = require("../helper/store");
 apiRoutes.get('/notes', (req, res) => {
   console.info(`${req.method} request received to get notes`)
   store.getNotes().then((notes) => res.json((notes)))
- 
-  
     // then take the notes and return them with res.json
   // readFromFile('./db.json').then((data) => res.json(JSON.parse(data)))
-   
 })
 
 // POST A NEW NOTE //
 apiRoutes.post('/notes', (req, res) => {
-  store
+  console.info(`${req.method} request received to post notes`)
+  store.addNote().then((notes) => res.json((notes)))
+
+  
     // addNote(req.body)
     // then return note with res.json
 })
