@@ -1,5 +1,7 @@
-// require fs
-// require util
+// require fs -done below
+const fs = require('fs');
+// require util - done below
+const util = require('util');
 // require uuid
 const util = require('util');
 

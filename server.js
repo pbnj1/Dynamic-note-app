@@ -2,9 +2,9 @@
 const express = require("express")
 
 // require your routes - for the api -done below
-const api = require("./routes/api_routes")
+const apiRoutes = require("./routes/apiRoutes")
 // require you routes  - done below
-const router = require("./routes/html_routes")
+const htmlRoutes = require("./routes/htmlRoutes")
 
 // initialize the app -done below
 const app = express()
@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 //set up route middleware - activities 15 and 16, // activities 21 and 22 -done below?
-app.use('/api', api);
-app.use('/', router); 
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes); 
 
 
 // start the server on the port - app.listen - 
