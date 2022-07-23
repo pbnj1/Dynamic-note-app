@@ -1,11 +1,6 @@
-// require fs -done below
 const fs = require('fs');
-// require util - done below
 const util = require('util');
-// require uuid
-
 const { v1: uuidv1 }= require('uuid');
-
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -14,8 +9,8 @@ class Store {
     return readFileAsync('db/db.json', 'utf8');
   }
 
-  write(note) {
-    return writeFileAsync('db/db.json', JSON.stringify(note));
+  write(notes) {
+    return writeFileAsync('db/db.json', JSON.stringify(notes));
   }
 
   getNotes() {
@@ -26,21 +21,35 @@ class Store {
     })
   }
 
-  addNote(note) {
-    const { title, text } = note;
-
-    const newNote = { title, text, id: uuidv1() }; // give note an id
+  addNote(notes) {
+    console.log("inside the addNotes function")
+    const { title, text } = notes;
+ 
+      const newNote = { 
+        title,
+        text,
+        id: uuidv1() };    // give note an id
+    
     // get all notes with getNotes()
-    this.getNotes()
-    // then add new note to them
+    this.getNotes(notes).then((notes) => {
+      notes.push(newNote);
+      console.log("inside the addNotes function");
+      return write(notes);
+    })
 
-    // then take the updated set of notes - write them to the file using write()
-    // then show the new note
   }
 
   removeNote(id) {
     // get all the notes use getNotes()
-    this.getNotes
+    this.getNotes().then((notes) =>{
+      for (let i =0; i < notes.length; i++){
+        if(id === notes[i].id){
+          const idNotes = notes.filter(id)
+         return this.write(idNotes);
+        }
+      }
+
+    })
     // then go through the notes to find the one with the matching id
     // take these updated/filtered notes - write them to file using write()
   }

@@ -10,7 +10,7 @@ const htmlRoutes = require("./routes/htmlRoutes");
 const app = express()
 
 // create a port - reference server.js files from activities in this module -done below
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // set up body parsing and urlencoded form data -done below
 app.use(express.json());
