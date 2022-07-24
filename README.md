@@ -1,7 +1,7 @@
 # Dynamic-note-app
 An express powered application to assist with note taking
 
-##Heroku app deployment site:
+Heroku app deployment site:
 https://limitless-shore-06713.herokuapp.com/
 
 
